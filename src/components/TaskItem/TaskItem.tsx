@@ -1,10 +1,10 @@
 import React, { type FC, type ReactElement } from 'react'
-import PenSvg from '../../assets/svg/pen.svg'
+import PenSvg from '../../assets/svg/rename.svg'
 import DoneEmptySvg from '../../assets/svg/done-empty.svg'
 import DoneSvg from '../../assets/svg/done.svg'
 import TrashSvg from '../../assets/svg/trash.svg'
 import ApplySvg from '../../assets/svg/apply.svg'
-import CrossSvg from '../../assets/svg/cross.svg'
+import CrossSvg from '../../assets/svg/discard.svg'
 import { type Task } from '../../types'
 
 interface TaskItemProps {

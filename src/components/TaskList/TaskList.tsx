@@ -2,7 +2,7 @@ import React, { type FC, type ReactElement } from 'react'
 import { tasks } from './tasks'
 import TaskItem from '../TaskItem/TaskItem'
 import ApplySvg from '../../assets/svg/apply.svg'
-import CrossSvg from '../../assets/svg/cross.svg'
+import CrossSvg from '../../assets/svg/discard.svg'
 
 interface TaskListProps {
   forIsCompleted: boolean
