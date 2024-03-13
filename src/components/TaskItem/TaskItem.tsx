@@ -1,12 +1,4 @@
-import React, {
-  type ChangeEvent,
-  type FC, type FormEvent,
-  type MutableRefObject,
-  type ReactElement,
-  useEffect,
-  useRef,
-  useState
-} from 'react'
+import React, { type ChangeEvent, type FC, type FormEvent, type ReactElement, useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { type Task } from '../../types'
 import RenameSvg from '../../assets/svg/rename.svg'

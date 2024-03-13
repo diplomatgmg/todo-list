@@ -1,7 +1,5 @@
 import React, { type FC, type ReactElement } from 'react'
 import TaskItem from '../TaskItem/TaskItem'
-import ApplySvg from '../../assets/svg/apply.svg'
-import CrossSvg from '../../assets/svg/discard.svg'
 import './style.css'
 import { useAppSelector } from '../../redux/hooks'
 
