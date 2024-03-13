@@ -8,6 +8,8 @@ import TrashSvg from '../../assets/svg/trash.svg'
 import ApplySvg from '../../assets/svg/apply.svg'
 import CrossSvg from '../../assets/svg/discard.svg'
 import './style.css'
+import { useAppDispatch } from '../../redux/hooks'
+import { deleteTask, toggleTaskComplete } from '../../redux/taskSlice'
 
 interface TaskItemProps {
   isEditing?: boolean
@@ -15,6 +17,16 @@ interface TaskItemProps {
 }
 
 const TaskItem: FC<TaskItemProps> = ({ isEditing = false, task }): ReactElement => {
+  const dispatch = useAppDispatch()
+
+  const handleToggleTaskComplete = (): void => {
+    dispatch(toggleTaskComplete(task.id))
+  }
+
+  const handleDeleteTask = (): void => {
+    dispatch(deleteTask(task.id))
+  }
+
   const renderNameField = (): ReactElement => {
     if (isEditing) {
       return (
@@ -32,17 +44,6 @@ const TaskItem: FC<TaskItemProps> = ({ isEditing = false, task }): ReactElement 
     )
   }
 
-  const renderButtons = (): ReactElement => {
-    return (
-      <>
-        <img src={task.isCompleted ? DoneSvg : DoneEmptySvg} alt=""/>
-        <img src={TrashSvg} alt=""/>
-        {isEditing && <img src={ApplySvg} alt=""/>}
-        {isEditing && <img src={CrossSvg} alt=""/>}
-      </>
-    )
-  }
-
   const taskItemClassName = clsx('task-item', {
     'task-item__editing': isEditing,
     'task-done': task.isCompleted
@@ -51,7 +52,12 @@ const TaskItem: FC<TaskItemProps> = ({ isEditing = false, task }): ReactElement 
   return (
     <li className={taskItemClassName}>
       <div className="task-item__left">{renderNameField()}</div>
-      <div className="task-item__buttons">{renderButtons()}</div>
+      <div className="task-item__buttons">
+        <img onClick={handleToggleTaskComplete} src={task.isCompleted ? DoneSvg : DoneEmptySvg} alt=""/>
+        <img onClick={handleDeleteTask} src={TrashSvg} alt=""/>
+        {isEditing && <img src={ApplySvg} alt=""/>}
+        {isEditing && <img src={CrossSvg} alt=""/>}
+      </div>
     </li>
   )
 }

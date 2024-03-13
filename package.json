@@ -2,13 +2,17 @@
   "name": "todo-list",
   "version": "0.1.0",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.1",
     "@types/jest": "^27.5.2",
+    "@types/lodash": "^4.17.0",
     "@types/node": "^16.18.79",
     "@types/react": "^18.2.52",
     "@types/react-dom": "^18.2.18",
     "clsx": "^2.1.0",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^9.1.0",
     "react-svg": "^16.1.33",
     "web-vitals": "^2.1.4"
   },
