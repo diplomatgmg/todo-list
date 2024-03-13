@@ -16,6 +16,13 @@ const taskSlice = createSlice({
   reducers
 })
 
-export const { addTask, toggleTaskComplete, deleteTask, renameTask } = taskSlice.actions
+export const {
+  addTask,
+  toggleTaskComplete,
+  deleteTask,
+  renameTask,
+  changeTaskOrder
+} = taskSlice.actions
+
 export default taskSlice.reducer
 export { type TaskState }

@@ -31,5 +31,11 @@ export default {
     if (taskToRename !== undefined) {
       taskToRename.name = name
     }
+  },
+
+  changeTaskOrder (state: TaskState, action: PayloadAction<{ startIndex: number, endIndex: number }>) {
+    const { startIndex, endIndex } = action.payload
+    const [removedTask] = state.tasks.splice(startIndex, 1)
+    state.tasks.splice(endIndex, 0, removedTask)
   }
 }

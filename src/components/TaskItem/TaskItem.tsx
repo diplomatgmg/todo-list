@@ -73,7 +73,7 @@ const TaskItem: FC<TaskItemProps> = ({ task }): ReactElement => {
 
   return (
     <li className={taskItemClassName}>
-      <form onSubmit={handleRenameTask}>
+      <form onSubmit={handleRenameTask} className="task-item__form">
         <div className="task-item__left">
           {renderNameField()}
         </div>
@@ -85,7 +85,6 @@ const TaskItem: FC<TaskItemProps> = ({ task }): ReactElement => {
           {isEditing && <img onClick={() => setIsEditing(false)} src={CrossSvg} alt=""/>}
         </div>
       </form>
-
     </li>
   )
 }
