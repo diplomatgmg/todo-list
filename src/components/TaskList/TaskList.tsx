@@ -21,24 +21,6 @@ const TaskList: FC<TaskListProps> = ({ forIsCompleted }): ReactElement => {
       <ul className="tasks-list-list">
         {filteredTasks.map((task) => <TaskItem key={task.id} task={task}/>)}
       </ul>
-
-      {
-        !forIsCompleted
-          ? (
-          <li className="task-item">
-            <div className="task-item__left">
-              <label className="task-item__rename">
-                <input className="task-item__name"/>
-              </label>
-            </div>
-            <div className="task-item__buttons">
-              <img src={ApplySvg} alt=""/>
-              <img src={CrossSvg} alt=""/>
-            </div>
-          </li>
-            )
-          : ''
-      }
     </div>
   )
 }

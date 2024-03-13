@@ -1,4 +1,8 @@
 .task-item {
+  list-style: none;
+}
+
+.task-item form {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,7 +41,6 @@
 }
 
 .task-item__name {
-  cursor: pointer;
   margin-right: 120px;
   overflow: hidden;
   white-space: nowrap;

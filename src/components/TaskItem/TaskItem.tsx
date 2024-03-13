@@ -1,4 +1,12 @@
-import React, { type ChangeEvent, type FC, type MutableRefObject, type ReactElement, useEffect, useRef, useState } from 'react'
+import React, {
+  type ChangeEvent,
+  type FC, type FormEvent,
+  type MutableRefObject,
+  type ReactElement,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 import clsx from 'clsx'
 import { type Task } from '../../types'
 import RenameSvg from '../../assets/svg/rename.svg'
@@ -31,21 +39,23 @@ const TaskItem: FC<TaskItemProps> = ({ task }): ReactElement => {
     dispatch(deleteTask(task.id))
   }
 
-  useEffect(() => {
-    if (isEditing && inputRef.current !== null) {
-      inputRef.current.focus()
-      inputRef.current.select()
-    }
-  }, [isEditing])
-
   const handleSetInput = (e: ChangeEvent<HTMLInputElement>): void => {
     setInput(e.target.value)
   }
 
-  const handleRenameTask = (): void => {
+  const handleRenameTask = (e: FormEvent): void => {
+    e.preventDefault()
+
     dispatch(renameTask({ id: task.id, name: input }))
     setIsEditing(false)
   }
+
+  useEffect(() => {
+    if (isEditing) {
+      inputRef.current?.focus()
+      inputRef.current?.select()
+    }
+  }, [isEditing])
 
   const renderNameField = (): ReactElement => {
     if (isEditing) {
@@ -71,13 +81,19 @@ const TaskItem: FC<TaskItemProps> = ({ task }): ReactElement => {
 
   return (
     <li className={taskItemClassName}>
-      <div className="task-item__left">{renderNameField()}</div>
-      <div className="task-item__buttons">
-        {!isEditing && <img onClick={handleToggleTaskComplete} src={task.isCompleted ? DoneSvg : DoneEmptySvg} alt=""/>}
-        {!isEditing && <img onClick={handleDeleteTask} src={TrashSvg} alt=""/>}
-        {isEditing && <img onClick={handleRenameTask} src={ApplySvg} alt=""/>}
-        {isEditing && <img onClick={() => setIsEditing(false)} src={CrossSvg} alt=""/>}
-      </div>
+      <form onSubmit={handleRenameTask}>
+        <div className="task-item__left">
+          {renderNameField()}
+        </div>
+        <div className="task-item__buttons">
+          {!isEditing &&
+            <img onClick={handleToggleTaskComplete} src={task.isCompleted ? DoneSvg : DoneEmptySvg} alt=""/>}
+          {!isEditing && <img onClick={handleDeleteTask} src={TrashSvg} alt=""/>}
+          {isEditing && <img src={ApplySvg} alt=""/>}
+          {isEditing && <img onClick={() => setIsEditing(false)} src={CrossSvg} alt=""/>}
+        </div>
+      </form>
+
     </li>
   )
 }
