@@ -72,7 +72,7 @@ const TaskItem: FC<TaskItemProps> = ({ task }): ReactElement => {
         <p className="task-item__name">{task.name}</p>
       </>
     )
-  }, [isEditing, input, task.name, task.isCompleted])
+  }, [isEditing])
 
   const taskItemClassName = clsx('task-item', {
     'task-item__editing': isEditing,
