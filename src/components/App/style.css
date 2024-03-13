@@ -23,6 +23,10 @@ img {
   height: 28px;
   cursor: pointer;
 }
+img:hover {
+  opacity: 70%;
+  transition: opacity 0.2s;
+}
 
 input:focus, input:hover {
   outline: 1px solid #3E1671;

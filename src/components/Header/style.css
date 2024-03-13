@@ -35,5 +35,8 @@
   color: #fff;
   cursor: pointer;
 }
+.header__button:hover {
+  opacity: 80%;
+}
 
 /*# sourceMappingURL=style.css.map */
