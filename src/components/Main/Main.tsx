@@ -5,8 +5,7 @@ import './style.css'
 const Main = (): ReactElement => {
   return (
     <main className="main">
-      <TaskList forIsCompleted={false}/>
-      <TaskList forIsCompleted={true}/>
+      <TaskList/>
     </main>
   )
 }

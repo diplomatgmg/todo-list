@@ -18,6 +18,7 @@ export default {
     if (taskToToggle !== undefined) {
       taskToToggle.isCompleted = !taskToToggle.isCompleted
     }
+    state.tasks = _.orderBy(state.tasks, ['isCompleted'])
   },
 
   deleteTask (state: TaskState, action: PayloadAction<TaskId>) {

@@ -1,14 +1,5 @@
 .tasks-list {
   width: 100%;
 }
-.tasks-list:last-of-type {
-  margin-top: 64px;
-}
-
-.tasks-list__count {
-  margin-bottom: 16px;
-  font-size: 24px;
-  color: #fff;
-}
 
 /*# sourceMappingURL=style.css.map */

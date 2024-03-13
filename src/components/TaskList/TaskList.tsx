@@ -1,55 +1,71 @@
-import React, { type FC, type ReactElement } from 'react'
-import TaskItem from '../TaskItem/TaskItem'
+import React, { type ReactElement } from 'react'
 import './style.css'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
-import { DragDropContext, Droppable, Draggable, type DropResult } from 'react-beautiful-dnd'
+import { DragDropContext, Droppable, type DropResult } from 'react-beautiful-dnd'
 import { changeTaskOrder } from '../../redux/taskSlice'
+import DragAndDropTaskItem from '../TaskItem/DragAndDropTaskItem'
+import { type Task } from '../../types'
 import _ from 'lodash'
+import TaskItem from '../TaskItem/TaskItem'
+import TaskCount from '../TaskCount/TaskCount'
 
-interface TaskListProps {
-  forIsCompleted: boolean
-}
-
-const TaskList: FC<TaskListProps> = ({ forIsCompleted }): ReactElement => {
+const TaskList = (): ReactElement => {
   const tasks = useAppSelector(state => state.tasks.tasks)
   const dispatch = useAppDispatch()
 
-  const filteredTasks = tasks.filter(task => task.isCompleted === forIsCompleted)
-
-  const taskCountName = forIsCompleted ? 'Done' : 'Tasks to do'
+  const activeTasks = tasks.filter(task => !task.isCompleted)
+  const completedTasks = tasks.filter(task => task.isCompleted)
 
   const handleDragEnd = (result: DropResult): void => {
     const { destination, source } = result
+
     if (_.isNil(destination) || destination.index === source.index) {
       return
     }
 
-    dispatch(changeTaskOrder({ startIndex: source.index, endIndex: destination.index }))
+    dispatch(changeTaskOrder({
+      startIndex: source.index,
+      endIndex: destination.index
+    }))
+  }
+
+  const renderActiveTasks = (activeTasks: Task[]): ReactElement => {
+    return (
+      <>
+        <TaskCount title="Активные задачи:" count={activeTasks.length} />
+        <DragDropContext onDragEnd={handleDragEnd}>
+          <Droppable droppableId="tasks">
+            {(provided) => (
+              <ul {...provided.droppableProps} ref={provided.innerRef}>
+                {activeTasks.map((task, index) => (
+                  <DragAndDropTaskItem key={task.id} task={task} index={index} />
+                ))}
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </>
+    )
+  }
+
+  const renderCompletedTasks = (completedTasks: Task[]): ReactElement => {
+    return (
+      <>
+        <TaskCount title="Завершённые задачи:" count={completedTasks.length} />
+        <ul>
+          {completedTasks.map((task) => (
+            <TaskItem key={task.id} task={task} />
+          ))}
+        </ul>
+      </>
+    )
   }
 
   return (
     <div className="tasks-list">
-      <p className="tasks-list__count">
-        {taskCountName} - {filteredTasks.length}
-      </p>
-      <DragDropContext onDragEnd={handleDragEnd}>
-        <Droppable droppableId="tasks">
-          {(provided) => (
-            <ul className="tasks-list-list" {...provided.droppableProps} ref={provided.innerRef}>
-              {filteredTasks.map((task, index) => (
-                <Draggable key={task.id} draggableId={task.id} index={index}>
-                  {(provided) => (
-                    <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                      <TaskItem task={task} />
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </ul>
-          )}
-        </Droppable>
-      </DragDropContext>
+      {renderActiveTasks(activeTasks)}
+      {renderCompletedTasks(completedTasks)}
     </div>
   )
 }
