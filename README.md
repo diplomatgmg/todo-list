@@ -1,4 +1,1 @@
-## Installation:
-```bash
-npm install
-```
+## [DEPLOY](https://todo-list-blush-xi.vercel.app/)
