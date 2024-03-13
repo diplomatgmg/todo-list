@@ -1,11 +1,12 @@
 import React, { type FC, type ReactElement } from 'react'
+import clsx from 'clsx'
+import { type Task } from '../../types'
 import PenSvg from '../../assets/svg/rename.svg'
 import DoneEmptySvg from '../../assets/svg/done-empty.svg'
 import DoneSvg from '../../assets/svg/done.svg'
 import TrashSvg from '../../assets/svg/trash.svg'
 import ApplySvg from '../../assets/svg/apply.svg'
 import CrossSvg from '../../assets/svg/discard.svg'
-import { type Task } from '../../types'
 import './style.css'
 
 interface TaskItemProps {
@@ -14,49 +15,45 @@ interface TaskItemProps {
 }
 
 const TaskItem: FC<TaskItemProps> = ({ isEditing = false, task }): ReactElement => {
-  if (isEditing) {
+  const renderNameField = (): ReactElement => {
+    if (isEditing) {
+      return (
+        <label className="task-item__rename">
+          <input className="task-item__name" value={task.name}/>
+        </label>
+      )
+    }
+
     return (
-      <li className="task-item">
-        <div className="task-item__left">
-          <label className="task-item__rename">
-            <input className="task-item__name" value={task.name}/>
-          </label>
-        </div>
-        <div className="task-item__buttons">
-          <img src={ApplySvg} alt=""/>
-          <img src={CrossSvg} alt=""/>
-        </div>
-      </li>
+      <>
+        {!task.isCompleted && <img src={PenSvg} alt="" className="rena"/>}
+        <p className="task-item__name">{task.name}</p>
+      </>
     )
   }
 
-  if (task.isCompleted) {
+  const renderButtons = (): ReactElement => {
     return (
-      <li className="task-item task-done">
-        <div className="task-item__left">
-          <p className="task-item__name">{task.name}</p>
-        </div>
-        <div className="task-item__buttons">
-          <img src={task.isCompleted ? DoneSvg : DoneEmptySvg} alt=""/>
-          <img src={TrashSvg} alt=""/>
-        </div>
-      </li>
+      <>
+        <img src={task.isCompleted ? DoneSvg : DoneEmptySvg} alt=""/>
+        <img src={TrashSvg} alt=""/>
+        {isEditing && <img src={ApplySvg} alt=""/>}
+        {isEditing && <img src={CrossSvg} alt=""/>}
+      </>
     )
   }
+
+  const taskItemClassName = clsx('task-item', {
+    'task-item__editing': isEditing,
+    'task-done': task.isCompleted
+  })
 
   return (
-    <li className="task-item">
-      <div className="task-item__left">
-        <img src={PenSvg} alt="" className="rena"/>
-        <p className="task-item__name">{task.name}</p>
-      </div>
-      <div className="task-item__buttons">
-        <img src={DoneEmptySvg} alt=""/>
-        <img src={TrashSvg} alt=""/>
-      </div>
+    <li className={taskItemClassName}>
+      <div className="task-item__left">{renderNameField()}</div>
+      <div className="task-item__buttons">{renderButtons()}</div>
     </li>
   )
-
 }
 
 export default TaskItem

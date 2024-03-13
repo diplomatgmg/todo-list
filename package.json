@@ -6,6 +6,7 @@
     "@types/node": "^16.18.79",
     "@types/react": "^18.2.52",
     "@types/react-dom": "^18.2.18",
+    "clsx": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-svg": "^16.1.33",
