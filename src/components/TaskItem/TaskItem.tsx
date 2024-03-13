@@ -81,7 +81,7 @@ const TaskItem: FC<TaskItemProps> = ({ task }): ReactElement => {
           {!isEditing &&
             <img onClick={handleToggleTaskComplete} src={task.isCompleted ? DoneSvg : DoneEmptySvg} alt=""/>}
           {!isEditing && <img onClick={handleDeleteTask} src={TrashSvg} alt=""/>}
-          {isEditing && <img src={ApplySvg} alt=""/>}
+          {isEditing && <img onClick={handleRenameTask} src={ApplySvg} alt=""/>}
           {isEditing && <img onClick={() => setIsEditing(false)} src={CrossSvg} alt=""/>}
         </div>
       </form>
