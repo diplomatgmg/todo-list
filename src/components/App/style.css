@@ -24,4 +24,8 @@ img {
   cursor: pointer;
 }
 
+input:focus, input:hover {
+  outline: 1px solid #3E1671;
+}
+
 /*# sourceMappingURL=style.css.map */

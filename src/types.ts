@@ -4,4 +4,6 @@ interface Task {
   isCompleted: boolean
 }
 
-export type { Task }
+type TaskId = Task['id']
+
+export type { Task, TaskId }
