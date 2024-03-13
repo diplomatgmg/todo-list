@@ -8,7 +8,7 @@ interface DragAndDropTaskItemProps {
   index: number
 }
 
-const DragAndDropTaskItem: FC<DragAndDropTaskItemProps> = ({ task, index }): ReactElement => {
+const TaskItemDAD: FC<DragAndDropTaskItemProps> = ({ task, index }): ReactElement => {
   return (
     <Draggable key={task.id} draggableId={task.id} index={index}>
       {(provided) => (
@@ -20,4 +20,4 @@ const DragAndDropTaskItem: FC<DragAndDropTaskItemProps> = ({ task, index }): Rea
   )
 }
 
-export default DragAndDropTaskItem
+export default TaskItemDAD

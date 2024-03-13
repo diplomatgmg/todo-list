@@ -1,4 +1,13 @@
-import React, { type ChangeEvent, type FC, type FormEvent, type ReactElement, useEffect, useRef, useState } from 'react'
+import React, {
+  type ChangeEvent,
+  type FC,
+  type FormEvent,
+  type ReactElement,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react'
 import clsx from 'clsx'
 import { type Task } from '../../types'
 import RenameSvg from '../../assets/svg/rename.svg'
@@ -49,22 +58,21 @@ const TaskItem: FC<TaskItemProps> = ({ task }): ReactElement => {
     }
   }, [isEditing])
 
-  const renderNameField = (): ReactElement => {
+  const renderNameField = useMemo((): ReactElement => {
     if (isEditing) {
       return (
         <label className="task-item__rename">
-          <input className="task-item__name" value={input} onChange={handleSetInput} ref={inputRef}/>
+          <input className="task-item__name" value={input} onChange={handleSetInput} ref={inputRef} />
         </label>
       )
     }
-
     return (
       <>
-        {!task.isCompleted && <img src={RenameSvg} onClick={() => setIsEditing(true)} alt="" className="rena"/>}
+        {!task.isCompleted && <img src={RenameSvg} onClick={() => setIsEditing(true)} alt="" className="rena" />}
         <p className="task-item__name">{task.name}</p>
       </>
     )
-  }
+  }, [isEditing, input, task.name, task.isCompleted])
 
   const taskItemClassName = clsx('task-item', {
     'task-item__editing': isEditing,
@@ -75,7 +83,7 @@ const TaskItem: FC<TaskItemProps> = ({ task }): ReactElement => {
     <li className={taskItemClassName}>
       <form onSubmit={handleRenameTask} className="task-item__form">
         <div className="task-item__left">
-          {renderNameField()}
+          {renderNameField}
         </div>
         <div className="task-item__buttons">
           {!isEditing &&

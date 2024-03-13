@@ -3,7 +3,7 @@ import './style.css'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import { DragDropContext, Droppable, type DropResult } from 'react-beautiful-dnd'
 import { changeTaskOrder } from '../../redux/taskSlice'
-import DragAndDropTaskItem from '../TaskItem/DragAndDropTaskItem'
+import TaskItemDAD from '../TaskItem/TaskItemDAD'
 import { type Task } from '../../types'
 import _ from 'lodash'
 import TaskItem from '../TaskItem/TaskItem'
@@ -38,7 +38,7 @@ const TaskList = (): ReactElement => {
             {(provided) => (
               <ul {...provided.droppableProps} ref={provided.innerRef}>
                 {activeTasks.map((task, index) => (
-                  <DragAndDropTaskItem key={task.id} task={task} index={index} />
+                  <TaskItemDAD key={task.id} task={task} index={index} />
                 ))}
                 {provided.placeholder}
               </ul>
