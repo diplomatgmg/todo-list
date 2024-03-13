@@ -19,6 +19,11 @@ ul, li, p {
   padding: 0;
 }
 
+img {
+  height: 28px;
+  cursor: pointer;
+}
+
 .header {
   width: 580px;
   display: flex;
@@ -83,6 +88,26 @@ ul, li, p {
   border-radius: 16px;
 }
 
+.main__task-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.main__task-rename .main__task-name {
+  background-color: #0D0714;
+  border: 1px solid #3E1671;
+  border-radius: 8px;
+  padding: 12px;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.main__task-rename-img {
+  height: 28px;
+  cursor: pointer;
+}
+
 .main__task-name {
   cursor: pointer;
 }
@@ -101,12 +126,6 @@ ul, li, p {
 .main__buttons {
   display: flex;
   gap: 12px;
-}
-.main__buttons img {
-  height: 28px;
-  fill: white;
-  color: white;
-  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

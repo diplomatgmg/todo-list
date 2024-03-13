@@ -25,6 +25,11 @@ ul, li, p
   padding: 0
 
 
+img
+  height: 28px
+  cursor: pointer
+
+
 .header
   width: 580px
   display: flex
@@ -88,6 +93,22 @@ ul, li, p
   margin-bottom: 16px
   border-radius: 16px
 
+.main__task-left
+  display: flex
+  align-items: center
+  gap: 16px
+
+.main__task-rename .main__task-name
+  background-color: $background-color
+  border: 1px solid $dark-purple
+  border-radius: 8px
+  padding: 12px
+  color: #ffffff
+  font-size: 16px
+
+.main__task-rename-img
+  height: 28px
+  cursor: pointer
 
 .main__task-name
   cursor: pointer
@@ -108,10 +129,5 @@ ul, li, p
   display: flex
   gap: 12px
 
-  img
-    height: 28px
-    fill: white
-    color: white
-    cursor: pointer
 
 
