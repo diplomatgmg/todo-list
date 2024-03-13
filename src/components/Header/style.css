@@ -1,0 +1,39 @@
+.header {
+  width: 580px;
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 32px;
+}
+
+.header__label {
+  width: 100%;
+}
+
+.header__input {
+  color: white;
+  width: 100%;
+  font-size: 20px;
+  background-color: #0D0714;
+  border: 1px solid #3E1671;
+  border-radius: 8px;
+  padding: 8px;
+  padding-left: 20px;
+}
+.header__input::placeholder {
+  font-family: monospace;
+}
+
+.header__button {
+  height: auto;
+  width: 48px;
+  padding: 0;
+  background-color: #9E78CF;
+  border: none;
+  border-radius: 8px;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */

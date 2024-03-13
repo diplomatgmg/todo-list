@@ -6,6 +6,7 @@ import TrashSvg from '../../assets/svg/trash.svg'
 import ApplySvg from '../../assets/svg/apply.svg'
 import CrossSvg from '../../assets/svg/discard.svg'
 import { type Task } from '../../types'
+import './style.css'
 
 interface TaskItemProps {
   isEditing?: boolean
@@ -15,13 +16,13 @@ interface TaskItemProps {
 const TaskItem: FC<TaskItemProps> = ({ isEditing = false, task }): ReactElement => {
   if (isEditing) {
     return (
-      <li className="main__task">
-        <div className="main__task-left">
-          <label className="main__task-rename">
-            <input className="main__task-name" value={task.name}/>
+      <li className="task-item">
+        <div className="task-item__left">
+          <label className="task-item__rename">
+            <input className="task-item__name" value={task.name}/>
           </label>
         </div>
-        <div className="main__buttons">
+        <div className="task-item__buttons">
           <img src={ApplySvg} alt=""/>
           <img src={CrossSvg} alt=""/>
         </div>
@@ -31,11 +32,11 @@ const TaskItem: FC<TaskItemProps> = ({ isEditing = false, task }): ReactElement 
 
   if (task.isCompleted) {
     return (
-      <li className="main__task task-done">
-        <div className="main__task-left">
-          <p className="main__task-name">{task.name}</p>
+      <li className="task-item task-done">
+        <div className="task-item__left">
+          <p className="task-item__name">{task.name}</p>
         </div>
-        <div className="main__buttons">
+        <div className="task-item__buttons">
           <img src={task.isCompleted ? DoneSvg : DoneEmptySvg} alt=""/>
           <img src={TrashSvg} alt=""/>
         </div>
@@ -44,12 +45,12 @@ const TaskItem: FC<TaskItemProps> = ({ isEditing = false, task }): ReactElement 
   }
 
   return (
-    <li className="main__task">
-      <div className="main__task-left">
-        <img src={PenSvg} alt="" className="main__task-rename-img"/>
-        <p className="main__task-name">{task.name}</p>
+    <li className="task-item">
+      <div className="task-item__left">
+        <img src={PenSvg} alt="" className="rena"/>
+        <p className="task-item__name">{task.name}</p>
       </div>
-      <div className="main__buttons">
+      <div className="task-item__buttons">
         <img src={DoneEmptySvg} alt=""/>
         <img src={TrashSvg} alt=""/>
       </div>

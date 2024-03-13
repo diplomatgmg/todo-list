@@ -1,4 +1,5 @@
 import React, { type ReactElement } from 'react'
+import './style.css'
 
 const Header = (): ReactElement => {
   return (
