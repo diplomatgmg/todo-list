@@ -52,6 +52,9 @@
   color: #78CFB0;
   text-decoration: line-through;
 }
+.task-done form {
+  background: rgba(21, 16, 28, 0.5);
+}
 
 .task-item__buttons {
   display: flex;
