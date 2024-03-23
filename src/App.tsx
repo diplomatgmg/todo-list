@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from '../Header/Header'
-import Main from '../Main/Main'
-import './style.css'
+import Header from './components/Header/Header'
+import Main from './components/Main/Main'
+import './style.sass'
 
 const App = (): React.ReactElement => {
   return (

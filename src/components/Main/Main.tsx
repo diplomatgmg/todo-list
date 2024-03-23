@@ -1,6 +1,6 @@
 import React, { type ReactElement } from 'react'
 import TaskList from '../TaskList/TaskList'
-import './style.css'
+import './style.sass'
 
 const Main = (): ReactElement => {
   return (

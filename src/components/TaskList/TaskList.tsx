@@ -1,5 +1,5 @@
 import React, { type ReactElement } from 'react'
-import './style.css'
+import './style.sass'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import { DragDropContext, Droppable, type DropResult } from 'react-beautiful-dnd'
 import { changeTaskOrder } from '../../redux/taskSlice'

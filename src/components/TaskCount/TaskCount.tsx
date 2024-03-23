@@ -1,5 +1,5 @@
 import React, { type FC, type ReactElement } from 'react'
-import './style.css'
+import './style.sass'
 
 interface TaskCountProps {
   title: string

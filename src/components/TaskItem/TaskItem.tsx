@@ -16,7 +16,7 @@ import DoneSvg from '../../assets/svg/done.svg'
 import TrashSvg from '../../assets/svg/trash.svg'
 import ApplySvg from '../../assets/svg/apply.svg'
 import CrossSvg from '../../assets/svg/discard.svg'
-import './style.css'
+import './style.sass'
 import { useAppDispatch } from '../../redux/hooks'
 import { deleteTask, renameTask, toggleTaskComplete } from '../../redux/taskSlice'
 
