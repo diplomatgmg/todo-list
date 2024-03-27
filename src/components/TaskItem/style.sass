@@ -30,8 +30,8 @@
     white-space: nowrap
     text-overflow: ellipsis
 
-  &__name, &__rename
-    width: 85%
+  &__rename
+    width: 80%
     background-color: $background-color
     border: 1px solid $dark-purple
     border-radius: 8px
@@ -39,6 +39,15 @@
     color: #ffffff
     font-size: 16px
 
+  input
+    padding: 0
+    font-size: 16px
+    border: none
+    background: none
+    color: #fff
+
+    &:hover, &:focus
+      outline: none
 
   &__rename-img
     height: 28px
@@ -47,7 +56,6 @@
   &__buttons
     display: flex
     gap: 12px
-
 
 
 .task-done

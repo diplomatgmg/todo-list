@@ -4,7 +4,6 @@ import React, {
   type FormEvent,
   type ReactElement,
   useEffect,
-  useMemo,
   useRef,
   useState
 } from 'react'
@@ -58,7 +57,7 @@ const TaskItem: FC<TaskItemProps> = ({ task }): ReactElement => {
     }
   }, [isEditing])
 
-  const renderNameField = useMemo((): ReactElement => {
+  const renderNameField = (): ReactElement => {
     if (isEditing) {
       return (
         <label className="task-item__rename">
@@ -72,7 +71,7 @@ const TaskItem: FC<TaskItemProps> = ({ task }): ReactElement => {
         <p className="task-item__name">{task.name}</p>
       </>
     )
-  }, [isEditing])
+  }
 
   const taskItemClassName = clsx('task-item', {
     'task-item__editing': isEditing,
@@ -83,7 +82,7 @@ const TaskItem: FC<TaskItemProps> = ({ task }): ReactElement => {
     <li className={taskItemClassName}>
       <form onSubmit={handleRenameTask} className="task-item__form">
         <div className="task-item__left">
-          {renderNameField}
+          {renderNameField()}
         </div>
         <div className="task-item__buttons">
           {!isEditing &&
